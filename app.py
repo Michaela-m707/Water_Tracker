@@ -25,7 +25,11 @@ def index():
 
 @app.route('/add')
 def add():
-    return render_template('add.html', title="Add Record")
+    return "Add Form"
+
+@app.route('/add-submit')
+def add_submit():
+    return "Record Added <h1><a href=\"/\">Home</a></h1>"
 
 if __name__ == '__main__':
     app.run(debug=True, port=41973, host='0.0.0.0')
