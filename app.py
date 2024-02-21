@@ -25,7 +25,30 @@ def index():
 
 @app.route('/add')
 def add():
-    return "Add Form"
+
+    data = request.form
+    
+    date = None
+
+    if "date" in data:
+        date = data["date"]
+
+    if not "user_id" in data:
+        return "User ID Missing"
+
+    if not "intake_amount" in data:
+        return "Intake Amount Missing"
+    
+    if date == None:
+
+        cursor.execute("INSERT into water_intake (user_id, intake_amount) VALUES (?, ?)", (data["user_id"], data["intake_amount"]))
+    else:
+
+        cursor.execute("INSERT into water_intake (date, user_id, intake_amount) VALUES (?, ?, ?)", (data["date"], data["user_id"], data["intake_amount"]))
+
+    db.commit()
+
+    return "Record Added"
 
 @app.route('/add-submit')
 def add_submit():
