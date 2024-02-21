@@ -28,23 +28,33 @@ def add():
 
     data = request.form
     
+    # Date is optional
     date = None
-
+    
     if "date" in data:
         date = data["date"]
+    
+    # Get Username
 
-    if not "user_id" in data:
-        return "User ID Missing"
+    if not "username" in data:
+        return "Username Missing"
 
+    user = cursor.execute("SELECT * from users WHERE username LIKE ?", (data["username"],)).fetchone()
+    
+    if user == None:
+        return "Invalid User"
+
+    user_id = user["id"]
+     
     if not "intake_amount" in data:
         return "Intake Amount Missing"
     
     if date == None:
 
-        cursor.execute("INSERT into water_intake (user_id, intake_amount) VALUES (?, ?)", (data["user_id"], data["intake_amount"]))
+        cursor.execute("INSERT into water_intake (user_id, intake_amount) VALUES (?, ?)", (user_id, data["intake_amount"]))
     else:
 
-        cursor.execute("INSERT into water_intake (date, user_id, intake_amount) VALUES (?, ?, ?)", (data["date"], data["user_id"], data["intake_amount"]))
+        cursor.execute("INSERT into water_intake (date, user_id, intake_amount) VALUES (?, ?, ?)", (data["date"], user_id, data["intake_amount"]))
 
     db.commit()
 
