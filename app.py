@@ -34,6 +34,10 @@ def add():
     if "date" in data:
         date = data["date"]
     
+    # Intake Amount must exist
+    if not "intake_amount" in data:
+        return "Intake Amount Missing"
+
     # Get Username
 
     if not "username" in data:
@@ -46,11 +50,8 @@ def add():
 
     user_id = user["id"]
      
-    if not "intake_amount" in data:
-        return "Intake Amount Missing"
     
     if date == None:
-
         cursor.execute("INSERT into water_intake (user_id, intake_amount) VALUES (?, ?)", (user_id, data["intake_amount"]))
     else:
 
