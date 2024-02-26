@@ -15,72 +15,109 @@
             <div class="Record_Table">
                   <h3>Record Your Intake</h3>
             </div>
-            <div class="container">
-              <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item" role="presentation">
-                      <a class="nav-link active" data-bs-toggle="tab" href="#Type" aria-selected="true" role="tab">Container-Type <i class="fa-solid fa-bottle-water" style="color: #40c6e7;"></i></a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Measurements <i class="fa-solid fa-scale-unbalanced-flip" style="color: #40c6e7;"></i> </a>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                      <a class="nav-link" data-bs-toggle="tab" href="#messages" aria-selected="false" role="tab" tabindex="-1">Intakes <i class="fa-regular fa-square-plus" style="color: #40c6e7;"></i></a>
-              </ul>
-              <div id="myTabContent" class="tab-content">
-                  <div class="tab-pane fade active show" id="Type" role="tabpanel">
-                      <p>What was your container type? <button type="button" class="btn btn-secondary">Water-Bottle</button> <button type="button" class="btn btn-info">Cup</button> </p> 
-                  </div>
-                  <div class="tab-pane fade" id="profile" role="tabpanel">
-                      <p>What is the measurements of your container?</p>
-                      <fieldset class="form-group">
-                        <legend class="mt-4">Cups or Ounces</legend>
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="radio" name="cupOunce" id="cupsRadio" value="cups" onclick="showInputBox('cupsInput')">
-                          <label class="form-check-label" for="cupsRadio">Cups</label>
-                        </div>
-                        <div class="form-check form-switch">
-                          <input class="form-check-input" type="radio" name="cupOunce" id="ouncesRadio" value="ounces" onclick="showInputBox('ouncesInput')">
-                          <label class="form-check-label" for="ouncesRadio">Ounces</label>
-                        </div>
-                      </fieldset>
 
-                      <div id="cupsInput" style="display: none;">
-                        <label for="cups">Enter the number of cups:</label>
-                        <input type="number" id="cups" name="cups">
+
+            <div class="card border-info mb-3" style="max-width: 20rem;">
+              <div class="card-header">Sign In</div>
+              <div class="card-body">
+                <div class="form-group">
+                  <label for=""></label>
+                  <small id="helpId" class="text-muted">User Name/ID</small>
+                  <input type="text" name="name" id="userName" class="form-control" placeholder="" aria-describedby="helpId">
+                  
+                  <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+            
+              <div class="container-fluid">
+                  <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link active" data-bs-toggle="tab" href="#Type" aria-selected="true" role="tab">Container-Type <i class="fa-solid fa-bottle-water" style="color: #40c6e7;"></i></a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Measurements <i class="fa-solid fa-scale-unbalanced-flip" style="color: #40c6e7;"></i> </a>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link" data-bs-toggle="tab" href="#messages" aria-selected="false" role="tab" tabindex="-1">Intakes <i class="fa-regular fa-square-plus" style="color: #40c6e7;"></i></a>
+                      </li>
+                  </ul>
+                  <div id="myTabContent" class="tab-content">
+                      <div class="tab-pane fade active show" id="Type" role="tabpanel">
+                          <p>What was your container type?</p>
+                          <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="waterBottleSwitch">
+                              <label class="form-check-label" for="waterBottleSwitch">Water-Bottle</label>
+                          </div>
+                          <div class="form-check form-switch">
+                              <input class="form-check-input" type="checkbox" id="cupSwitch">
+                              <label class="form-check-label" for="cupSwitch">Cup</label>
+                          </div>
                       </div>
-
-                      <div id="ouncesInput" style="display: none;">
-                        <label for="ounces">Enter the number of ounces:</label>
-                        <input type="number" id="ounces" name="ounces">
+                      <div class="tab-pane fade" id="profile" role="tabpanel">
+                          <p>What is the measurements of your container?</p>
+                          <fieldset class="form-group">
+                              <legend class="mt-4">Cups or Ounces</legend>
+                              <div class="form-check form-switch">
+                                  <input class="form-check-input" type="radio" name="cupOunce" id="cupsRadio" value="cups" onclick="showInputBox('cupsInput')">
+                                  <label class="form-check-label" for="cupsRadio">Cups</label>
+                              </div>
+                              <div class="form-check form-switch">
+                                  <input class="form-check-input" type="radio" name="cupOunce" id="ouncesRadio" value="ounces" onclick="showInputBox('ouncesInput')">
+                                  <label class="form-check-label" for="ouncesRadio">Ounces</label>
+                              </div>
+                          </fieldset>
+              
+                          <div id="cupsInput" style="display: none;">
+                              <label for="cups">Enter the number of cups:</label>
+                              <input type="number" id="cups" name="cups">
+                          </div>
+              
+                          <div id="ouncesInput" style="display: none;">
+                              <label for="ounces">Enter the number of ounces:</label>
+                              <input type="number" id="ounces" name="ounces">
+                          </div>
+              
+                          <script>
+                              function showInputBox(inputId) {
+                                  const inputBox = document.getElementById(inputId);
+                                  if (inputBox.style.display === "none") {
+                                      inputBox.style.display = "block";
+                                  } else {
+                                      inputBox.style.display = "none";
+                                  }
+                              }
+              
+                              const ouncesInput = document.getElementById("ounces");
+                              const cupsInput = document.getElementById("cups");
+              
+                              ouncesInput.addEventListener("input", function() {
+                                  const ounces = parseFloat(ouncesInput.value);
+                                  const cups = ounces / 8; // Assuming 1 cup = 8 ounces
+                                  cupsInput.value = cups.toFixed(2); // Display cups with 2 decimal places
+                              });
+                          </script>
                       </div>
-
-                      <script>
-                        function showInputBox(inputId) {
-                          const inputBox = document.getElementById(inputId);
-                          if (inputBox.style.display === "none") {
-                            inputBox.style.display = "block";
-                          } else {
-                            inputBox.style.display = "none";
-                          }
-                        }
-
-                        const ouncesInput = document.getElementById("ounces");
-                        const cupsInput = document.getElementById("cups");
-
-                        ouncesInput.addEventListener("input", function() {
-                          const ounces = parseFloat(ouncesInput.value);
-                          const cups = ounces / 8; // Assuming 1 cup = 8 ounces
-                          cupsInput.value = cups.toFixed(2); // Display cups with 2 decimal places
-                        });
-                      </script>
-                    
+                      <div class="tab-pane fade" id="messages" role="tabpanel">
+                          <p>How many intakes did you have?</p>
+                          <div class="slidecontainer">
+                              <input type="range" min="1" max="10" value="5" class="slider" id="intakeSlider">
+                              <p>Value: <span id="intakeValue"></span></p>
+              
+                              <script>
+                                  var slider = document.getElementById("intakeSlider");
+                                  var output = document.getElementById("intakeValue");
+                                  output.innerHTML = slider.value;
+              
+                                  slider.oninput = function() {
+                                      output.innerHTML = this.value;
+                                  }
+                              </script>
+                          </div>
                       </div>
-
-                  <div class="tab-pane fade" id="intakes" role="tabpanel">
-                    <p>How many times did you drink from your container?</p>
                   </div>
               </div>
-          </div>
+            
         
   </body>
 </html>
